@@ -1,0 +1,23 @@
+---
+import { GameComponent } from "../components/GameComponent";
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="Game">
+	<main>
+    <GameComponent client:load />
+	</main>
+</Layout>
+
+
+<style>
+	main {
+    max-height: 99vh;
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+    overflow: hidden;
+    cursor: crosshair;
+	}
+</style>
