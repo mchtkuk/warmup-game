@@ -24,7 +24,6 @@ export const GameComponent = () => {
   };
 
   const handleImageClick = () => {
-    // Logic to increase the score
     setScore(score + 1);
     if (isSoundEnabled) {
       const audio = new Audio(popSound);
@@ -32,6 +31,8 @@ export const GameComponent = () => {
     }
   };
   const imageSources = ["../ct.png", "../t.png"];
+
+console.log(time)
 
   const getRandomImage = () => {
     const randomIndex = Math.floor(Math.random() * imageSources.length);
@@ -48,7 +49,7 @@ export const GameComponent = () => {
         onClick={handleImageClick}
         style={{
           left: `${Math.random() * 80}vw`,
-          top: `${Math.random() * 80}vh`,
+          top: `${Math.random() * 60}vh`,
           width: "250px",
           height: "250px",
           position: "relative",
