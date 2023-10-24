@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
 import popSound from "../assets/pop.mp3";
+import Timer from "./Timer.tsx";
+const imageSources = ["../ct.png", "../t.png"];
 
 export const GameComponent = () => {
   const [score, setScore] = useState(0);
-  const [images, setImages] = useState([]);
-  const [restart, setRestart] = useState(false);
-  const [previousScore, setPreviousScore] = useState(0);
-  const [time, setTime] = useState(60); // Initial time in seconds
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
-
   const [gameOver, setGameOver] = useState(false);
+  const [currentImage, setCurrentImage] = useState(getRandomImage());
+  const [time, setTime] = useState(60); // Initial time in seconds
 
   const handleTimeout = () => {
-    setGameOver(true);
+      setGameOver(true);
   };
 
   const handleRestart = () => {
-    setPreviousScore(score);
     setScore(0);
-    setImages([]);
     setGameOver(false);
+    setCurrentImage(getRandomImage());
     setTime(60);
   };
 
@@ -29,58 +27,15 @@ export const GameComponent = () => {
       const audio = new Audio(popSound);
       audio.play();
     }
+    setCurrentImage(getRandomImage());
   };
-  const imageSources = ["../ct.png", "../t.png"];
 
-console.log(time)
-
-  const getRandomImage = () => {
+  function getRandomImage() {
     const randomIndex = Math.floor(Math.random() * imageSources.length);
     return imageSources[randomIndex];
-  };
+  }
 
-  const renderRandomImages = () => {
-    return images.map((_, index) => (
-      <img
-        key={index}
-        src={getRandomImage()}
-        alt="Random Image"
-        className="random-image"
-        onClick={handleImageClick}
-        style={{
-          left: `${Math.random() * 80}vw`,
-          top: `${Math.random() * 60}vh`,
-          width: "250px",
-          height: "250px",
-          position: "relative",
-        }}
-        draggable="false"
-      />
-    ));
-  };
-
-  const MAX_IMAGES = 1;
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (time > 0) {
-        setTime(time - 1);
-      } else {
-        handleTimeout();
-      }
-
-      const newImage = getRandomImage();
-
-      if (images.length >= MAX_IMAGES) {
-        const updatedImages = images.slice(1);
-        setImages(updatedImages);
-      }
-
-      setImages((prevImages) => [...prevImages, newImage]);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [images, time]);
+  console.log(currentImage);
 
   return (
     <>
@@ -89,7 +44,7 @@ console.log(time)
           <p className="text-center font-bold">Game Over</p>
           <p className="text-center font-bold">Score was: {score}</p>
           <button
-            className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            className="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             onClick={handleRestart}
           >
             Restart
@@ -99,12 +54,12 @@ console.log(time)
         <>
           <div className="mt-5 flex flex-col items-center">
             <p className="text-center font-bold">Score: {score}</p>
-            <p className="text-center font-bold">Time: {time} seconds</p>
+            <Timer initialTime={time} setGameOver={setGameOver} />
             <button
               className={`${
                 isSoundEnabled
-                  ? "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
-                  : "bg-red-500 text-white font-semibold py-2 px-4 border border-red-500  rounded shadow"
+                  ? "bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                  : "bg-red-500 text-white font-semibold py-2 px-4 border border-red-500 rounded shadow"
               } p-2 rounded-lg`}
               onClick={() => setIsSoundEnabled(!isSoundEnabled)}
             >
@@ -113,7 +68,20 @@ console.log(time)
           </div>
           <div className="flex relative w-screen h-screen overflow-hidden">
             <div className="absolute w-full h-full flex overflow-hidden">
-              {renderRandomImages()}
+              <img
+                src={currentImage}
+                alt="Random Image"
+                className="random-image"
+                onClick={handleImageClick}
+                style={{
+                  left: `${Math.random() * 80}vw`,
+                  top: `${Math.random() * 60}vh`,
+                  width: "250px",
+                  height: "250px",
+                  position: "relative",
+                }}
+                draggable="false"
+              />
             </div>
           </div>
         </>
