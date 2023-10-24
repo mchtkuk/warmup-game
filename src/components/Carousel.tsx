@@ -7,7 +7,7 @@ export const CarouselComponent = () => {
     <Carousel  className="presentation-mode" showThumbs={false} autoPlay={false} infiniteLoop={false} showStatus={false} emulateTouch={true}>
     <div className='flex flex-col justify-center items-center h-full'>
       <h1>Welcome to Warm up game</h1>
-      <h3>Swipe and read the tutorial</h3>
+      <h3>Swipe and read the tutorial very important stuff</h3>
     </div>
     <div className='flex-col flex justify-center items-center h-full'>
       <h1>If you're tired with waiting death matches</h1>
