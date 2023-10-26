@@ -35,8 +35,6 @@ export const GameComponent = () => {
     return imageSources[randomIndex];
   }
 
-  console.log(currentImage);
-
   return (
     <>
       {gameOver ? (

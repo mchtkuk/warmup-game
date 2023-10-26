@@ -1,13 +1,30 @@
 ---
+import Card from '../components/Card.astro';
 import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 
 ---
 
 <Layout title="Welcome to Astro.">
-	<Header />
+	<Header/>
 	<main class="p-6 container">
-		<p>why do you cry</p>
+		<div class="flex mt-36 justify-center">
+			<div class="flex flex-col text-center">
+				<p>"Before the actual game"</p>
+				<h1>2FPS</h1>
+				<h2>Warm up your reflexes</h2>
+				<h3>Dominate the playground</h3>
+				<a href="game" class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer">Play as Guest</a>
+			</div>
+		</div>	
+		<div class="flex flex-row p-6 gap-3">
+			<Card image='https://www.pindepago.com/games/1638553886.jpg' />
+			<Card image='https://cdn1.ntv.com.tr/gorsel/44SrHFS2rkqaj5bmK3BmUg.jpg?width=952&height=540&mode=both&scale=both' />
+			<Card image='https://upload.wikimedia.org/wikipedia/tr/8/8b/Apex_legends_kapak.jpg' />
+		</div>
+		<div class="text-center">
+		<h4>Select the desired texture of variety games and adept better</h4>	
+		</div>	
 	</main>
 </Layout>
 
@@ -19,6 +36,8 @@ import Layout from '../layouts/Layout.astro';
 		font-size: 20px;
 		line-height: 1.6;
 		display: flex;
+		flex-direction: column;
+		max-width: 800px;
 	}
 	.astro-a {
 		position: absolute;
@@ -31,6 +50,20 @@ import Layout from '../layouts/Layout.astro';
 	}
 	h1 {
 		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 0.5em;
+	}
+	h2 {
+		font-size: 3rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	h3 {
+		font-size: 2rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;
