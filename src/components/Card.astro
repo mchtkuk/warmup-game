@@ -1,0 +1,13 @@
+---
+interface Props {
+  image: string
+}
+
+const {image} = Astro.props
+---
+
+<div class="flex w-64 h-auto relative mt-5">
+  <div class="relative flex">
+    <img class=" w-full rounded" src={image}>
+  </div>
+</div>

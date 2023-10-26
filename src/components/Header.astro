@@ -1,16 +1,20 @@
 ---
-title: "Header"
+import Layout from "../layouts/Layout.astro";
+
 ---
 
 
-<header class="flex flex-row justify-between items-center p-6 mx-auto container">
-  <h1 class="text-white font-bold text-lg">Aim Trainer</h1>
+<Layout title="header">
+<header class="border bg-zinc-900 border-white border-t-0 border-l-0 border-r-0 border-b-1 rounded  fixed w-full">
+  <div class="flex flex-row justify-between items-center p-6 mx-auto container ">
+  <h1 class="text-white font-bold text-lg">2FPS</h1>
   <nav>
     <ul>
-    </div>
     </ul>
   </nav>
   <div class="space-x-6">
-    <a class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer">Sign in</a>
-    <a href="game" class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer">Play as Guest</a>
+    <a class="bg-white hover-bg-gray-100 text-gray-700 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer">Sign in</a>
+  </div>
+</div>
 </header>
+</Layout>
