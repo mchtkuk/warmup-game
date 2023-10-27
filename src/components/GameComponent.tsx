@@ -8,10 +8,10 @@ export const GameComponent = () => {
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
   const [gameOver, setGameOver] = useState(false);
   const [currentImage, setCurrentImage] = useState(getRandomImage());
-  const [time, setTime] = useState(60); // Initial time in seconds
+  const [time, setTime] = useState(5); // Initial time in seconds
 
   const handleTimeout = () => {
-      setGameOver(true);
+    setGameOver(true);
   };
 
   const handleRestart = () => {
@@ -38,9 +38,24 @@ export const GameComponent = () => {
   return (
     <>
       {gameOver ? (
-        <div className="mt-5 flex flex-col gap-5 items-center">
+        <div className="p-5 flex justify-between items-center flex-row gap-5 border bg-zinc-900 border-white border-t-0 border-l-0 border-r-0 border-b-1 rounded ">
           <p className="text-center font-bold">Game Over</p>
-          <p className="text-center font-bold">Score was: {score}</p>
+          <p className="font-bold">Score was: {score}</p>
+          <div>
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+            </label>
+            <select
+              id="textures"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected>Choose a game texture</option>
+              <option value="VL">Valorant</option>
+              <option value="CS">Counter Strike</option>
+              <option value="AP">Apex Legends</option>
+            </select>
+          </div>
           <button
             className="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
             onClick={handleRestart}
@@ -50,7 +65,7 @@ export const GameComponent = () => {
         </div>
       ) : (
         <>
-          <div className="mt-5 flex flex-col items-center">
+          <div className="flex justify-between p-5 flex-row items-center border bg-zinc-900 border-white border-t-0 border-l-0 border-r-0 border-b-1 rounded">
             <p className="text-center font-bold">Score: {score}</p>
             <Timer initialTime={time} setGameOver={setGameOver} />
             <button

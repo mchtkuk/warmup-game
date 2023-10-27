@@ -16,7 +16,7 @@ const Timer = ({ initialTime, setGameOver }) => {
     return () => clearInterval(timer);
   }, [time]);
 
-  return <div>Time Left: {time}</div>;
+  return <div className="font-bold">Time Left: {time}</div>;
 };
 
 export default Timer;
