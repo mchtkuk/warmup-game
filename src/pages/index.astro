@@ -1,43 +1,42 @@
 ---
 import Card from '../components/Card.astro';
-import Header from '../components/Header.astro';
 import Layout from '../layouts/Layout.astro';
 
 ---
 
 <Layout title="Welcome to Astro.">
-	<Header/>
-	<main class="p-6 container">
-		<div class="flex mt-36 justify-center">
-			<div class="flex flex-col text-center">
-				<p>"Before the actual game"</p>
-				<h1>2FPS</h1>
-				<h2>Warm up your reflexes</h2>
-				<h3>Dominate the playground</h3>
-				<a href="game" class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow cursor-pointer">Play as Guest</a>
+	<main>
+		<div class="hero flex flex-row absolute z-10 w-full h-full text-center items-center justify-center">
+			<div class="container flex flex-row">
+			<div class="flex flex-col w-1/2 items-center justify-center">
+			<h1>2FPS</h1>
 			</div>
-		</div>	
-		<div class="flex flex-row p-6 gap-3">
-			<Card image='https://www.pindepago.com/games/1638553886.jpg' />
-			<Card image='https://cdn1.ntv.com.tr/gorsel/44SrHFS2rkqaj5bmK3BmUg.jpg?width=952&height=540&mode=both&scale=both' />
-			<Card image='https://upload.wikimedia.org/wikipedia/tr/8/8b/Apex_legends_kapak.jpg' />
+			<div class="flex flex-col w-1/2 gap-4">
+			<button class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Sign In</button>
+			<a href="game" class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Play as Guest</a>
+			<a href="" class="bg-white hover-bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Leaderboard</a>
+			</div>
 		</div>
-		<div class="text-center">
-		<h4>Select the desired texture of variety games and adept better</h4>	
-		</div>	
+	</div>
+		<div class="flex w-screen h-screen object-contain">
+		<div class="video-container w-screen h-screen pointer-events-none z-0 blur-sm">
+				<iframe src="https://www.youtube-nocookie.com/embed/e97Xe7544Yg?VQ=HD1080&si=7_tC4BzN9GPygD55&amp;controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" title="YouTube video player" allowfullscreen></iframe>
+			</div>
+    </div>
+	</div>
 	</main>
 </Layout>
 
 <style>
 	main {
 		margin: auto;
-		padding: 1rem;
 		color: white;
 		font-size: 20px;
+		min-width: 100%;
 		line-height: 1.6;
 		display: flex;
 		flex-direction: column;
-		max-width: 800px;
+		overflow: hidden;
 	}
 	.astro-a {
 		position: absolute;
@@ -100,4 +99,22 @@ import Layout from '../layouts/Layout.astro';
 		gap: 2rem;
 		padding: 0;
 	}
+	.video-container { 
+    position: relative; 
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: 100%;
+} 
+
+.video-container iframe,
+.video-container object,
+.video-container embed { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 </style>

@@ -8,7 +8,7 @@ export const GameComponent = () => {
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
   const [gameOver, setGameOver] = useState(false);
   const [currentImage, setCurrentImage] = useState(getRandomImage());
-  const [time, setTime] = useState(5); // Initial time in seconds
+  const [time, setTime] = useState(60); // Initial time in seconds
 
   const handleTimeout = () => {
     setGameOver(true);
